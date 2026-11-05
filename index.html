@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReSkill – Our project portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+
+
+/* =================================
+   FUTURISTIC FLOATING MUSIC PLAYER
+================================= */
+
+.music-widget {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 12px 18px 12px 12px;
+
+    background: rgba(25, 0, 25, 0.88);
+    border: 1px solid var(--a);
+    border-radius: 70px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 0 20px rgba(223, 182, 178, 0.16),
+        0 0 45px rgba(133, 79, 108, 0.25),
+        inset 0 0 18px rgba(223, 182, 178, 0.06);
+
+    transition: 0.35s ease;
+}
+
+.music-widget:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 25px rgba(223, 182, 178, 0.3),
+        0 0 65px rgba(133, 79, 108, 0.4);
+}
+
+/* VINYL DISC */
+
+.vinyl {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #21121f 0px,
+            #21121f 2px,
+            #49303f 3px,
+            #21121f 4px,
+            #21121f 6px
+        );
+
+    border: 1px solid rgba(223, 182, 178, 0.7);
+
+    display: grid;
+    place-items: center;
+
+    box-shadow:
+        0 0 15px rgba(223, 182, 178, 0.2),
+        inset 0 0 12px rgba(0, 0, 0, 0.8);
+}
+
+/* VINYL CENTRE */
+
+.vinyl-inner {
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #FBE4D8,
+        #DFB6B2,
+        #854F6C
+    );
+
+    box-shadow: 0 0 12px rgba(223, 182, 178, 0.6);
+}
+
+.vinyl-label {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: var(--bg);
+
+    display: grid;
+    place-items: center;
+}
+
+.vinyl-label span {
+    display: none;
+}
+
+/* ROTATION ANIMATION */
+
+.vinyl.playing {
+    animation: vinylSpin 3s linear infinite;
+}
+
+@keyframes vinylSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* MUSIC INFORMATION */
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 125px;
+    line-height: 1.5;
+}
+
+.music-status {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--a);
+    opacity: 0.85;
+}
+
+.music-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--t);
+}
+
+.music-subtitle {
+    font-size: 9px;
+    color: var(--a);
+    opacity: 0.65;
+}
+
+/* PLAY / PAUSE BUTTON */
+
+.music-toggle {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+    border: 1px solid var(--a);
+
+    background: linear-gradient(
+        135deg,
+        var(--a),
+        var(--g)
+    );
+
+    color: var(--bg);
+
+    font-size: 13px;
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
+
+    transition: 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.12);
+
+    box-shadow:
+        0 0 15px rgba(223, 182, 178, 0.7);
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media(max-width: 600px) {
+    .music-widget {
+        right: 14px;
+        bottom: 14px;
+        gap: 10px;
+        padding: 9px 12px 9px 9px;
+    }
+
+    .vinyl {
+        width: 46px;
+        height: 46px;
+    }
+
+    .music-info {
+        min-width: 105px;
+    }
+}
+
+
+
+:root{--bg:#190019;--s:#2B124C;--b:#522B5B;--g:#854F6C;--a:#DFB6B2;--t:#FBE4D8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font:300 16px/1.7 'Sora','Helvetica Neue',Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:300;letter-spacing:-.03em;line-height:1.05}
+h1,h2{text-shadow:0 0 40px rgba(223,182,178,.35)}
+em{font-style:normal;color:var(--a)}
+p{color:var(--t);opacity:.78;max-width:60ch}
+#glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(133,79,108,.28),transparent 70%)}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(82,43,91,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(82,43,91,.28) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 30%,#000,transparent 75%)}
+section,footer,nav{position:relative;z-index:1}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+/* nav */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:28px;padding:10px 12px 10px 24px;border:1px solid var(--b);border-radius:999px;background:rgba(43,18,76,.55);backdrop-filter:blur(14px);font-size:14px}
+nav .logo{font-weight:500;letter-spacing:-.02em;color:var(--t)}
+nav .links{display:flex;gap:22px;color:var(--a)}
+nav .links a:hover{color:var(--t)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:999px;font:400 14px 'Sora',sans-serif;cursor:pointer;border:1px solid var(--a);transition:.3s;color:var(--t);background:transparent;box-shadow:0 0 0 rgba(223,182,178,0)}
+.btn:hover{box-shadow:0 0 28px rgba(223,182,178,.4)}
+.btn.p{background:var(--a);color:var(--bg);font-weight:500}
+.btn.s{padding:9px 18px}
+/* hero */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 90px;overflow:hidden}
+#hero::after{content:"";position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(circle,rgba(133,79,108,.45),transparent 65%);z-index:-1;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(6%,-4%) scale(1.12)}}
+#hero h1{font-size:clamp(40px,7.4vw,104px);max-width:14ch}
+#hero p{margin:26px auto 34px;font-size:18px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.num{position:absolute;font-size:13px;color:var(--a);opacity:.5;animation:fl 7s ease-in-out infinite alternate}
+@keyframes fl{to{transform:translateY(-26px)}}
+.socials-h{position:absolute;left:28px;bottom:28px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--a)}
+.scrollh{position:absolute;right:28px;bottom:28px;font-size:13px;color:var(--a)}
+.ico{width:38px;height:38px;border-radius:50%;border:1px solid var(--b);display:grid;place-items:center;font-size:12px;color:var(--t);background:rgba(43,18,76,.6);transition:.3s}
+.ico:hover{background:var(--a);color:var(--bg);box-shadow:0 0 24px rgba(223,182,178,.5)}
+.ico.l{width:62px;height:62px;font-size:14px}
+/* stats */
+#stats{padding:120px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--b)}
+.stat{padding:34px 24px 10px;border-left:1px solid var(--b)}
+.stat:nth-child(even){margin-top:56px}
+.stat b{display:block;font-weight:200;font-size:clamp(44px,6vw,84px);letter-spacing:-.04em;line-height:1}
+.stat span{font-size:14px;color:var(--a)}
+/* marquee */
+#band{padding:70px 0;overflow:hidden}
+#band .row{white-space:nowrap;font-size:clamp(70px,13vw,190px);font-weight:200;letter-spacing:-.05em;line-height:1.05;background:linear-gradient(90deg,var(--t),var(--g));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform}
+#band .row:nth-child(2){transform:rotate(-2deg);opacity:.55}
+/* craft */
+#craft{padding:120px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+#craft h2{font-size:clamp(40px,5.4vw,78px)}
+.wire{position:relative;height:340px;display:grid;place-items:center;perspective:900px}
+.cube{width:190px;height:190px;position:relative;transform-style:preserve-3d;animation:spin 16s linear infinite}
+.cube i{position:absolute;inset:0;border:1px solid var(--a);background:rgba(133,79,108,.08);box-shadow:0 0 30px rgba(223,182,178,.25) inset}
+.cube i:nth-child(1){transform:translateZ(95px)}.cube i:nth-child(2){transform:rotateY(180deg) translateZ(95px)}
+.cube i:nth-child(3){transform:rotateY(90deg) translateZ(95px)}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(95px)}
+.cube i:nth-child(5){transform:rotateX(90deg) translateZ(95px)}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(95px)}
+@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
+.tag{display:inline-block;padding:5px 14px;border:1px solid var(--b);border-radius:999px;font-size:13px;color:var(--a);margin-bottom:22px}
+.tick{margin-top:70px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tick div{display:flex;gap:14px;width:max-content;animation:mq 30s linear infinite}
+.tick span{padding:9px 20px;border:1px solid var(--b);border-radius:999px;background:rgba(43,18,76,.55);font-size:14px;color:var(--a);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* statement */
+#state{padding:110px 0}
+.stack{font-size:clamp(46px,8vw,120px);font-weight:300;letter-spacing:-.05em;line-height:.95;color:var(--a);text-align:right}
+.stack span{display:block}
+.stack span:nth-child(odd){opacity:.45}
+.discs{position:absolute;right:6%;top:50%;width:300px;height:300px;transform:translateY(-50%)}
+.discs i{position:absolute;width:190px;height:230px;border-radius:50%;border:1px solid rgba(251,228,216,.5);background:conic-gradient(from 140deg,var(--g),var(--t),var(--s),var(--a),var(--g));opacity:.82;box-shadow:0 0 50px rgba(133,79,108,.6);animation:fl 6s ease-in-out infinite alternate}
+.discs i:nth-child(1){left:0;top:20px;transform:rotate(-24deg)}
+.discs i:nth-child(2){left:60px;top:0;transform:rotate(12deg);animation-delay:-2s}
+.discs i:nth-child(3){left:110px;top:40px;transform:rotate(38deg);animation-delay:-4s}
+/* about */
+#who{min-height:80vh;display:grid;place-items:center;text-align:center;padding:90px 24px;overflow:hidden}
+#who::before{content:"";position:absolute;width:140%;height:50%;border-top:2px solid var(--a);border-bottom:2px solid var(--g);border-radius:50%;transform:rotate(-8deg);box-shadow:0 0 60px rgba(133,79,108,.7);opacity:.6}
+#who h2{font-size:clamp(44px,7vw,100px);position:relative}
+#who .b{display:none}
+#about{padding:100px 0 140px}
+#about h2{font-size:clamp(38px,5vw,72px);max-width:16ch;margin-bottom:60px}
+.ppl{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.ph{position:relative;aspect-ratio:4/5;border-radius:28px;border:1px solid var(--a);background:linear-gradient(160deg,var(--s),var(--bg));display:grid;place-items:center;text-align:center;cursor:pointer;overflow:hidden;box-shadow:0 0 70px rgba(133,79,108,.4);transition:.4s}
+.ph:hover{box-shadow:0 0 90px rgba(223,182,178,.4)}
+.ph span{color:var(--a);font-size:14px;padding:20px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph input{display:none}
+.cap{margin-top:16px}.cap b{font-weight:400;font-size:20px;display:block}.cap span{color:var(--a);font-size:14px}
+.story{margin-top:90px;display:grid;grid-template-columns:1fr 1.3fr;gap:60px}
+.story h3{font-size:clamp(28px,3.6vw,48px)}
+.story p{margin-bottom:18px}
+.story p:first-child{font-size:21px;opacity:1}
+.tl{position:relative;height:320px;margin-top:100px;perspective:600px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 4%}
+.tl::before{content:"";position:absolute;left:-5%;right:-5%;bottom:0;height:60%;background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);background-size:50px 38px;transform:rotateX(62deg);transform-origin:bottom;mask-image:linear-gradient(transparent,#000)}
+.n{position:relative;text-align:center;font-size:14px;color:var(--a);padding-bottom:10px;z-index:1}
+.n::before{content:"";display:block;width:1px;height:var(--h);margin:0 auto 12px;background:linear-gradient(var(--t),transparent)}
+.n::after{content:"";position:absolute;left:50%;top:0;width:14px;height:14px;margin:-4px 0 0 -7px;border-radius:50%;background:var(--t);box-shadow:0 0 28px 8px var(--g)}
+.n small{display:block;color:var(--t);opacity:.7;font-size:12px;max-width:16ch;margin:2px auto 0}
+/* site */
+#site{padding:120px 0 0;text-align:center;overflow:hidden}
+#site::before{content:"";position:absolute;top:0;left:50%;width:420px;height:100%;transform:translateX(-50%);background:linear-gradient(rgba(223,182,178,.3),transparent 80%);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);filter:blur(24px)}
+#site h2{font-size:clamp(40px,5.4vw,78px);position:relative}
+#site p{margin:18px auto 30px;position:relative}
+.lap{margin:80px auto 0;max-width:820px;height:300px;border:1px solid var(--a);border-bottom:0;border-radius:18px 18px 0 0;background:linear-gradient(180deg,var(--s),var(--bg));padding:16px;box-shadow:0 -20px 90px rgba(133,79,108,.55);position:relative}
+.lap .bar{display:flex;gap:7px;margin-bottom:16px}.lap .bar i{width:10px;height:10px;border-radius:50%;background:var(--b)}
+.lap .blk{height:84px;border-radius:10px;background:var(--b);opacity:.55;margin-bottom:12px}
+.lap .r{display:flex;gap:12px}.lap .r div{flex:1;height:90px;border-radius:10px;background:var(--g);opacity:.4}
+
+
+/* TWO WEBSITE CARDS */
+.website-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    margin-top: 65px;
+    text-align: center;
+}
+
+.website-card {
+    padding: 30px 24px 0;
+    border: 1px solid var(--b);
+    border-radius: 24px;
+    background: rgba(43, 18, 76, 0.35);
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+.website-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--a);
+    box-shadow: 0 0 35px rgba(223, 182, 178, 0.18);
+}
+
+.website-card h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.website-card p {
+    margin: 0 auto 25px;
+}
+
+.website-card .lap {
+    margin-top: 45px;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media(max-width:820px) {
+    .website-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* cta + footer */
+#join{padding:130px 24px;text-align:center}
+#join h2{font-size:clamp(38px,5.6vw,80px);max-width:14ch;margin:0 auto 34px}
+footer{border-top:1px solid var(--b);background:rgba(43,18,76,.35);overflow:hidden}
+.big{font-size:clamp(90px,22vw,330px);font-weight:300;letter-spacing:-.06em;line-height:.8;white-space:nowrap;margin-top:-4px;background:linear-gradient(180deg,var(--t) 20%,var(--g));-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:30px}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding:70px 0 40px}
+.fg h4{font-weight:400;font-size:18px;margin-bottom:14px}
+.fg a{display:block;color:var(--a);font-size:14px;margin-bottom:8px}.fg a:hover{color:var(--t)}
+.soc{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 22px}
+.mail{font-size:clamp(20px,2.2vw,30px);color:var(--t)}
+.copy{border-top:1px solid var(--b);padding:22px 0;font-size:13px;color:var(--a);display:flex;justify-content:space-between}
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity 1s,transform 1s,filter 1s}
+.rv.on{opacity:1;transform:none;filter:none}
+:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+@media(max-width:820px){
+ nav .links{display:none}nav{gap:14px}
+ .two,.story,.ppl,.fg{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}.stat:nth-child(even){margin-top:0}
+ .discs{display:none}.stack{text-align:left}
+ .socials-h,.scrollh{position:static;margin-top:40px}
+ .tl{padding:0}.n small{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<nav>
+ <a class="logo" href="#hero">Reskill</a>
+ <div class="links"><a href="#hero">Home</a><a href="#about">About Us</a><a href="#craft">Work</a><a href="#site">Website</a><a href="#contact">Contact</a></div>
+ <a class="btn p s" href="#contact">Let’s Talk</a>
+</nav>
+
+<section id="hero">
+ <span class="num" style="left:12%;top:26%">-60,0</span><span class="num" style="right:14%;top:32%;animation-delay:-3s">25,8</span><span class="num" style="left:20%;bottom:24%;animation-delay:-5s">70,9</span><span class="num" style="right:22%;bottom:20%;animation-delay:-2s">-16,5</span>
+ <h1>ReSkill<br>Make it <em>unforgettable</em></h1>
+ <p>A creative duo turning ideas into brands, websites and stories people remember.</p>
+ <div class="cta"><a class="btn p" href="#craft">View Our Work →</a><a class="btn" href="#about">Meet Us</a></div>
+ <div class="socials-h">Follow us <a class="ico" href="https://www.instagram.com/tasneemnurzahra?psln=eDVycHp2Ym10NjMz" aria-label="Instagram">Ig</a></div>
+ <div class="scrollh">Scroll to explore ↓</div>
+
+
+</section>
+
+<section id="stats"><div class="wrap">
+ <div class="stats rv">
+  <div class="stat"><b data-n="2">0</b><span>[Projects completed]</span></div>
+  <div class="stat"><b data-n="2">0</b><span>[Dedicated person]</span></div>
+  <div class="stat"><b data-n="1">0</b><span>[Powerful team]</span></div>
+  <div class="stat"><b data-n="50">0</b><span>[Satisfied clients]</span></div>
+ </div>
+</div></section>
+
+<section id="band" aria-hidden="true">
+ <div class="row" id="r1">ReWear – thrifting – Website – ft</div>
+ <div class="row" id="r2">Skill – Exchange – Website – Development</div>
+</section>
+
+<section id="craft"><div class="wrap">
+ <div class="two">
+  <div class="rv"><span class="tag">What we do?</span><h2>Our craft,<br>your <em>vision</em></h2></div>
+  <div class="wire rv"><div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+ </div>
+ <p class="rv" style="margin-top:40px">We create brand identities, websites and visual content for people who want to stand out. From the first sketch to the final launch, we work closely with you so the result feels like you and not like a template. We love working with small businesses, creators and startups with a story worth telling.</p>
+ <div class="tick"><div>
+  <span>Brand identity</span><span>Web design</span><span>Photography</span><span>Front-end development</span><span>Illustration</span><span>Social content</span><span>Brand identity</span><span>Web design</span><span>Photography</span><span>Front-end development</span><span>Illustration</span><span>Social content</span>
+ </div></div>
+</div></section>
+
+<section id="state"><div class="wrap" style="position:relative">
+ <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+ <p class="rv" style="position:relative;font-size:22px;max-width:22ch">Stop waiting, start creating.</p>
+ <div class="stack rv" aria-hidden="true"><span>Let’s create</span><span>Let’s create</span><span>Let’s create</span><span>Let’s create</span><span>Let’s create</span></div>
+</div></section>
+
+<section id="who"><h2 id="whoH">Who we are?</h2></section>
+
+<section id="about"><div class="wrap">
+ <h2 class="rv">Two creatives with <em>one shared vision</em></h2>
+ <div class="ppl">
+  <div class="rv">
+  <label class="ph">
+    <img 
+        src="TEAMMATES PIC ( TASNEEM ).jpg" 
+        alt="Tasneem's Photo"
+        class="profile-photo"
+    >
+</label>
+   <div class="cap"><b>TASNEEM NURZAHRA BINTI MOHD HAFIZUL</b><span>DFD STUDENT</span><p>Founder of Rewear </p><br>“I built Rewear because I value thrifting culture. Giving clothes a second life is good for the environment and for your wallet.”</p></div>
+  </div>
+  <div class="rv" style="margin-top:60px">
+    <label class="ph">
+    <img 
+        src="RANIA PIC.jpg" 
+        alt="Tasneem's Photo"
+        class="profile-photo"
+    >
+</label>
+   <div class="cap"><b>NUR RANIA KAMILIA BINTI NOOR HAFIZ</b><span>DFD STUDENT</span><p>Founder of Skill Exchange</p></div><br> “I created Skill Exchange because knowledge grows when it is shared. Students can learn from each other on one platform that makes college life easier.”</div>
+  </div>
+ </div>
+ <div class="story rv">
+  <h3>Our <em>story</em></h3>
+  <div>
+   <p> Hi , We're from Diploma in Computer Technology programme</br> in TVETMARA Lumut</p>
+   <p>We started our work together to create solutions that make a difference in our community.</p>
+   <p>We always aim to improve a better future for everyone</p>
+  </div>
+ </div>
+ <div class="tl rv">
+  <div class="n" style="--h:60px">July 26'<small>[Planning]</small></div>
+  <div class="n" style="--h:120px">August 26'<small>[RnD]</small></div>
+  <div class="n" style="--h:180px">September 26'<small>[Development]</small></div>
+  <div class="n" style="--h:240px">November 26'<small>[Our projects]</small></div>
+ </div>
+</div></section>
+
+
+<section id="site">
+  <div class="wrap">
+
+    <span class="tag" style="position:relative">Our Websites</span>
+    <h2 class="rv">Two visions, <em>one place</em></h2>
+    <p class="rv">Explore the websites we've individually created and the ideas behind them.</p>
+
+    <div class="website-grid">
+
+      <!-- TASNEEM'S WEBSITE -->
+      <div class="website-card rv">
+        <h3>Tasneem's Website</h3>
+        <p>Discover my creative work, projects and digital ideas.</p>
+
+        <a class="btn p" href="https://rewearco.ct.ws/" target="_blank">
+          Visit Website →
+        </a>
+
+        <div class="lap">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="blk"></div>
+          <div class="r"><div></div><div></div><div></div></div>
+        </div>
+      </div>
+
+      <!-- RANIA'S WEBSITE -->
+      <div class="website-card rv">
+        <h3>Rania's Website</h3>
+        <p>Explore her projects, creativity and digital experiences.</p>
+
+        <a class="btn p" href="https://skillexchange.infy.click/?i=1" target="_blank">
+          Visit Website →
+        </a>
+
+        <div class="lap">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="blk"></div>
+          <div class="r"><div></div><div></div><div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="join"><h2 class="rv">Ready to create something <em>together?</em></h2>
+ <div class="cta rv"><a class="btn p" href="#contact">Say Hello</a><a class="btn" href="#craft">View Our Work</a></div></section>
+
+<footer id="contact">
+ <div class="big" aria-hidden="true">Let’s talk</div>
+ <div class="wrap">
+  <div class="fg">
+   <div><h4>Follow us</h4>
+    <div class="soc"><a class="ico l" href="https://www.instagram.com/tasneemnurzahra?psln=eDVycHp2Ym10NjMz" aria-label="Instagram">Tap here </br> Tasneem's ig</a></div>
+    <a class="mail" href="mailto:hello@yourname.com">[tasneemnurzahra08@gmail.com]</a></div>
+   <div><h4>Navigate</h4><a href="#hero">Home</a><a href="#about">About Us</a><a href="#craft">Work</a><a href="#site">Website</a></div>
+   <div><h4>Connect</h4><a href="https://www.instagram.com/luvra_nia?srtk=NGVmYXk4NGU5ZHU0" aria-label="Instagram">Instagram [@luv_rania]</a><a href="tasneemnurzahra08@gmail.com" aria-label="Email">Email</a></div>
+   <div><h4>Info</h4><a href="#contact">Contact</a><a href="#privacy">Privacy</a></div>
+  </div
+  <div class="copy"><span>© 2026 [Reskill.co]</span><span>[Reskill]</span></div>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var d=document,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ d.addEventListener('pointermove',function(e){root.style.setProperty('--mx',e.clientX+'px');root.style.setProperty('--my',e.clientY+'px')});
+ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);x.target.querySelectorAll('[data-n]').forEach(count)}})},{threshold:.2});
+ d.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+ function count(el){var n=+el.dataset.n,t0=null;function f(t){t0=t0||t;var p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+'+';if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+ d.querySelectorAll('.ph input').forEach(function(i){i.addEventListener('change',function(){
+  var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=i.parentNode.querySelector('img')||d.createElement('img');im.src=r.result;im.alt='';i.parentNode.appendChild(im);i.parentNode.querySelector('span').style.display='none'};r.readAsDataURL(f)})});
+ var r1=d.getElementById('r1'),r2=d.getElementById('r2'),band=d.getElementById('band'),wh=d.getElementById('whoH'),who=d.getElementById('who');
+ function tick(){
+  var vh=innerHeight,b=band.getBoundingClientRect();
+  if(!rm&&b.top<vh&&b.bottom>0){var p=(vh-b.top)/(vh+b.height);r1.style.transform='translateX('+(-p*30+10)+'%)';r2.style.transform='rotate(-2deg) translateX('+(p*30-30)+'%)'}
+  var w=who.getBoundingClientRect(),q=(vh-w.top)/(vh+w.height);
+  var txt=q>.62?'And how it all started?':'Who we are?';if(wh.textContent!==txt)wh.textContent=txt;
+ }
+ addEventListener('scroll',function(){requestAnimationFrame(tick)},{passive:true});tick();
+
+
+})();
+</script>
+
+<!-- FLOATING FUTURISTIC MUSIC PLAYER -->
+<div class="music-widget">
+
+    <audio id="portfolioMusic" loop>
+        <source src="RESKILL PLAYLIST.mp3" type="audio/mpeg">
+        Your browser does not support audio playback.
+    </audio>
+
+    <!-- Spinning Vinyl -->
+    <div class="vinyl" id="vinylDisc">
+        <div class="vinyl-inner">
+            <div class="vinyl-label">
+                <span>R</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Information -->
+    <div class="music-info">
+        <span class="music-status">NOW PLAYING</span>
+        <span class="music-title">Reskill Playlist</span>
+        <span class="music-subtitle">Candy by Doja Cat</span>
+    </div>
+
+    <!-- Play / Pause Button -->
+    <button class="music-toggle" id="musicToggle"
+            aria-label="Play music">
+        <span id="musicIcon">▶</span>
+    </button>
+
+</div>
+
+<script>
+// Get music player elements
+const music = document.getElementById("portfolioMusic");
+const toggle = document.getElementById("musicToggle");
+const icon = document.getElementById("musicIcon");
+const disc = document.getElementById("vinylDisc");
+
+// Play / Pause button
+toggle.addEventListener("click", async function () {
+
+    if (music.paused) {
+
+        try {
+            await music.play();
+        } catch (error) {
+            console.error("Music playback failed:", error);
+        }
+
+    } else {
+        music.pause();
+    }
+
+});
+
+// When music starts
+music.addEventListener("play", function () {
+    disc.classList.add("playing");
+    icon.textContent = "Ⅱ";
+    toggle.setAttribute("aria-label", "Pause music");
+});
+
+// When music pauses
+music.addEventListener("pause", function () {
+    disc.classList.remove("playing");
+    icon.textContent = "▶";
+    toggle.setAttribute("aria-label", "Play music");
+});
+
+// Check for audio loading errors
+music.addEventListener("error", function () {
+    console.error("Audio loading error:", music.error);
+});
+</script>
+
+
+</body>
+</html>
